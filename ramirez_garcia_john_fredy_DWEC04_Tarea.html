@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="edificios.js"></script>
+    <title>Document</title>
+    <h1>Tarea para DWEC04.</h1>
+  </head>
+
+  <h1>Edificios</h1>
+
+  <body>
+    <style>
+      /** body {
+        background-color: #F5F5F5;
+      }*/
+      body {
+        background-image: url(https://img.freepik.com/fotos-premium/empresaria-tomar-cuestionario-evaluacion-evaluacion-encuesta-linea-examen-linea-elegir-respuesta-correcta-examen-completar-formulario-encuesta-linea-responder-preguntas-prueba_29488-9149.jpg?size=626&ext=jpg);
+        background-attachment: scroll;
+        /*background-repeat: no-repeat;*/
+        background-position: 0px 0px;
+        background-size: contain;
+      }
+    </style>
+    <form>
+      <h2>creacion de edificios</h2>
+      <h2>
+        para crear el edificio debes de darme la calla, el numero "nombre del
+        edificio" y codigo postal
+      </h2>
+      <input type="text" id="calle" placeholder="calle" /><br />
+      <input
+        type="text"
+        id="numero"
+        placeholder="numero o nombre del edificio "
+      /><br />
+      <input type="text" id="cp" placeholder="Codigo postal" /><br />
+      <button type="button" onclick="crear()">crear</button>
+
+      <div id="contenido"></div>
+
+      <h2>
+        aqui debes de introducir las plantas y puertas que tendra el edificio
+      </h2>
+      <input
+        type="texto"
+        id="numeroEdificio"
+        placeholder="numero o nombre del edificio"
+      /><br />
+      <input type="number" id="plantas" placeholder="plantas" /><br />
+      <input type="texto" id="puertas" placeholder="1A-2A-3A-etc" /><br />
+      <button type="button" onclick="modificarEdificio()">Agregar</button>
+
+      <button type="button" onclick="mostrarEdificios()">Mostrar</button>
+    </form>
+    <form>
+      <h3>para modificar el numero del edificio</h3>
+      <label>dime el numero del edificio a modificar</label>
+      <input
+        type="text"
+        id="numEdificio"
+        placeholder="numero o nombre del edificio"
+      /><br />
+      <label>dime el numero del edificio modificado</label>
+      <input
+        type="text"
+        id="numEdificioModiciar"
+        placeholder="numEdificioModificar"
+      /><br />
+      <button type="button" onclick="modificarNumero()">Modificar</button>
+    </form>
+    <form>
+      <h3>para modificar el numero de la calle</h3>
+      <label>dime el numero del edificio</label>
+      <input
+        type="text"
+        id="numEdificio2"
+        placeholder="numero o nombre del edificio"
+      /><br />
+      <label>dime la nueva calle del edificio modificado</label>
+      <input type="text" id="calleModiciar" placeholder="numCalle" /><br />
+      <button type="button" onclick="modificarCalle()">ModificarCalle</button>
+    </form>
+    <form>
+      <h3>para modificar el numero de la calle</h3>
+      <label>dime el numero del edificio</label>
+      <input
+        type="text"
+        id="numEdificio3"
+        placeholder="numero o nombre del edificio"
+      /><br />
+      <label>dime el CP del edificio modificado</label>
+      <input type="text" id="cpModificar" placeholder="cpModificar" /><br />
+      <button type="button" onclick="modificarCP()">ModificarCP</button>
+    </form>
+
+    <form>
+      <h3>para Imprimir numero</h3>
+      <label>dime el numero del edificio</label>
+      <input
+        type="text"
+        id="numImprimirEdificio"
+        placeholder="numImprimirEdificio"
+      /><br />
+      <label>El numero del Edificio es <span id="numImpreso"></span></label
+      ><br />
+      <button type="button" onclick="imprimirNumero()">MostrarNumero</button>
+    </form>
+    <form>
+      <h3>para Imprimir codigo postal</h3>
+      <label>dime el numero del edificio</label>
+      <input
+        type="text"
+        id="numImprimirEdificio."
+        placeholder="numero o nombre del edificio"
+      /><br />
+      <label>El codigo postal es:<span id="cpostal"></span></label><br />
+      <button type="button" onclick="imprimircodigoP()">
+        imprime codigo postal
+      </button>
+    </form>
+
+    <form>
+      <h3>para Imprimir la calle del edificio</h3>
+      <label>dime el numero del edificio</label>
+      <inputtype="text"
+        id="numImprimirEdificio.."
+        placeholder="numEdificio"
+      /><br />
+      <label>la calle del edificio es:<span id="nummCalle"></span></label><br />
+      <button type="button" onclick="imprimirCalle()">
+        imprime calle del edificio
+      </button>
+    </form>
+    <form>
+      <h3>agregar propietario</h3>
+      <label>dime el numero del edificio donde compro</label>
+      <input
+        type="text"
+        id="numEdificioComp"
+        placeholder="numEdificioComp"
+      /><br />
+      <label>dime el numero de la plata donde compro</label>
+      <input
+        type="text"
+        id="numPlantaCompada"
+        placeholder="numPlantaCompada"
+      /><br />
+      <label>dime el numero de la de la puerta del piso</label>
+      <input type="text" id="numPuertaPiso" placeholder="numPuertaPiso" /><br />
+      <label>dime el nombre del propietario</label>
+      <input
+        type="text"
+        id="numPropietario"
+        placeholder="numPropietario"
+      /><br />
+      <button type="button" onclick="neuevoPropietario()">
+        neuevoPropietario
+      </button>
+    </form>
+
+    <form>
+      <h3>implmir propietarios de la puertas de los pisos del edificio</h3>
+      <label>dime el numero del edificio</label>
+      <input
+        type="text"
+        id="numEdificioPisos"
+        placeholder="numEdificioPisos"
+      /><br />
+      <button type="button" onclick="imprimirPlantas()">imprimirPlantas</button>
+    </form>
+  </body>
+  <!--
+    Enunciado.
+
+Queremos hacer una aplicación en JavaScript para gestionar edificios con la información de la 
+situación del edificio y de los propietarios de cada piso. Para ello queremos almacenar la siguiente
+ información de cada edificio:
+
+    calle.
+    número.
+    código postal.
+    plantas del edificio (dentro de cada planta tendremos un número de puertas
+     y para cada puerta almacenaremos el nombre del propietario).
+
+Se pide:
+
+    *Crear un objeto que nos permita instanciar edificios. Cada vez que instanciemos un edificio 
+    le pasaremos la calle, número y código postal como parámetros. Se pide además crear los siguientes 
+    métodos para el objeto Edificio:
+
+       *agregarPlantasYPuertas(numplantas, puertas) // Se le pasa el número de plantas que queremos 
+       crear en el piso y el número de puertas por planta. Cada vez que se llame a este método, 
+       añadirá el número de plantas y puertas indicadas en los parámetros, 
+       a las que ya están creadas en el edificio.
+
+    *modificarNumero(numero) // Se le pasa el nuevo número del edificio para que lo actualice.
+    *modificarCalle(calle) // Se le pasa el nuevo nombre de la calle para que lo actualice.
+    *modificarCodigoPostal(codigo) // Se le pasa el nuevo número de código postal del edificio.
+    *imprimeCalle // Devuelve el nombre de la calle del edificio.
+    *imprimeNumero // Devuelve el número del edificio.
+    *imprimeCodigoPostal // Devuelve el código postal del edificio. 
+    *agregarPropietario(nombre,planta,puerta) // Se le pasa un nombre de propietario, un número de planta y un número de puerta y lo asignará como propietario de ese piso.
+    *imprimePlantas // Recorrerá el edificio e imprimirá todos los propietarios de cada puerta. 
+
+    Cada vez que se crea un edificio que muestre automáticamente un mensaje del estilo:
+        construido nuevo edificio en calle: xxxxxx, nº: xx, CP: xxxxx.
+    Cada vez que se añada un propietario a un piso de un edificio que muestre un mensaje del estilo:
+        xxxxxxxx es ahora el propietario de la puerta x de la planta x.
+
+Aquí se muestra un ejemplo de lo que tendría que mostrar la aplicación:
+
+Trabajando con objetos Javascript:
+
+Instanciamos 3 objetos edificioA, edificioB y edificioC con estos datos:
+
+    Construido nuevo edificio en calle: Garcia Prieto, nº: 58, CP: 15706.
+    Construido nuevo edificio en calle: Camino Caneiro, nº: 29, CP: 32004.
+    Construido nuevo edificio en calle: San Clemente, nº: s/n, CP: 15705.
+
+    El código postal del edificio A es: 15706.
+    La calle del edificio C es: San Clemente.
+    El edificio B está situado en la calle Camino Caneiro número 29.
+
+Agregamos 2 plantas y 3 puertas por planta al edificio A...
+
+Agregamos 4 propietarios al edificio A...
+
+    Jose Antonio Lopez es ahora el propietario de la puerta 1 de la planta 1.
+    Luisa Martinez es ahora el propietario de la puerta 2 de la planta 1.
+    Marta Castellón es ahora el propietario de la puerta 3 de la planta 1.
+    Antonio Pereira es ahora el propietario de la puerta 2 de la planta 2.
+
+Listado de propietarios del edificio calle García Prieto número 58
+
+    Propietario del piso 1 de la planta 1: Jose Antonio Lopez.
+    Propietario del piso 2 de la planta 1: Luisa Martinez.
+    Propietario del piso 3 de la planta 1: Marta Castellón.
+    Propietario del piso 1 de la planta 2:
+    Propietario del piso 2 de la planta 2: Antonio Pereira.
+    Propietario del piso 3 de la planta 2: 
+
+Agregamos 1 planta más al edificio A...
+
+Agregamos 1 propietario más al edificio A planta 3, puerta 2...
+
+    Pedro Meijide es ahora el propietario de la puerta 2 de la planta 3.
+
+Listado de propietarios del edificio calle García Prieto número 58
+
+    Propietario del piso 1 de la planta 1: Jose Antonio Lopez.
+    Propietario del piso 2 de la planta 1: Luisa Martinez.
+    Propietario del piso 3 de la planta 1: Marta Castellón.
+    Propietario del piso 1 de la planta 2:
+    Propietario del piso 2 de la planta 2:
+    Propietario del piso 1 de la planta 3:
+    Propietario del piso 2 de la planta 3: Pedro Meijide.
+--></html>
