@@ -157,6 +157,7 @@ function imprimirPlantas() {
   console.log(edificio.plantas.length);
 /**con el numero del edicio se busca y se imprime las plantas.
  * todo se escrime en un nuevo documento.
+ * 
 */
   for (
     let indexPlantas = 0;
