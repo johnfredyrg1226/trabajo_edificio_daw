@@ -1,10 +1,12 @@
-/**let desea = prompt("quieres crear un edificio", "")
+// esta linea crea una ventana para interactuar con el usuario.
+let desea = prompt("quieres crear un edificio", "")
 if (desea == "si" || desea == "SI" ) {
     prompt ("entraras al programa de creacion de edificios")
 } else {
     alert("hasta pronto, gracias") 
     window.close();
-}*/
+}
+//objecto Edificion con parametor. obligatorios al crear el edificio, con toas sus caracteristicas 
 function Edificios(calle, numero, codigoPostal) {
   this.calle = calle;
   this.numero = numero;
@@ -27,42 +29,44 @@ function Edificios(calle, numero, codigoPostal) {
     }
   };
 }
-
+// aqui creamos función puertas con numero de puerta y propietario
 function Puertas() {
   let numeroPuerta;
   let propietario;
 }
-
+// se crea un array par que cada vez que creemos un edificio nos lo guarde aqui.
 edificios = new Array();
 
+// se crea el edificio
 function crear(){
-  let calle = document.getElementById("calle").value;
+  let calle = document.getElementById("calle").value;// cacturamos del imput del html con id "calle"
   let numero = document.getElementById("numero").value;
   let codigoPostal = document.getElementById("cp").value;
 
-  coco = new Edificios(calle, numero, codigoPostal);
-  this.edificios.push(coco);
+  coco = new Edificios(calle, numero, codigoPostal);// el nuevo edificio se guarda en una variable. todo el objecto edificio
+  this.edificios.push(coco);// se agrega .push el nuevo edificio que ha sido guardado en la variable 
 
 
   //mostrar edificio automaticamente
-  document.getElementById('contenido').innerHTML = this.edificios;
+ // document.getElementById('contenido').innerHTML = this.edificios;
 
 }
 
+// esto es para modificar edicio agrgando puertas y plantas
 function modificarEdificio() {
   let numero = document.getElementById("numeroEdificio").value;
   let plantas = document.getElementById("plantas").value;
   let puertas = document.getElementById("puertas").value;
 
-  let edificio = buscarEdificio(numero);
+  let edificio = buscarEdificio(numero); // se busca el edificio por el elemento numero o nombre 
 
-  edificio.agregarPlantasYpuertas(plantas, puertas);
+  edificio.agregarPlantasYpuertas(plantas, puertas);// se le agrgan las plantas y las puertas al edificio con numero o nombre.
 }
-
+// se muestra el edicio es una funcion que se llama con un botton en el html.
 function mostrarEdificios() {
   console.log(this.edificios);
 }
-
+// se modifica el numero o nombre del eficio.
 function modificarNumero() {
   let ediAmodificar = document.getElementById("numEdificio").value;
   let ediModificado = document.getElementById("numEdificioModiciar").value;
@@ -71,6 +75,8 @@ function modificarNumero() {
   edificio.numero = ediModificado;
 }
 
+
+// con esta funcion buscamos el edificio por numero de edifiio o en el caso nombre...
 function buscarEdificio(numeroEdificio) {
   let edificio;
   /**
@@ -79,13 +85,14 @@ function buscarEdificio(numeroEdificio) {
             edificio = this.edificios[index];
         }
     }*/
-  this.edificios.forEach((element) => {
+  this.edificios.forEach((element) => { // foreach hace lo mismo que el for comentado lineas 83-87
     if (element.numero == numeroEdificio) {
       edificio = element;
     }
   });
   return edificio;
 }
+// se modifica la calle 
 function modificarCalle() {
   let nuemroedi = document.getElementById("numEdificio2").value;
   let nombrecalle = document.getElementById("calleModiciar").value;
@@ -93,6 +100,7 @@ function modificarCalle() {
   let edificio = buscarEdificio(nuemroedi);
   edificio.calle = nombrecalle;
 }
+//modifica Codigo postal
 function modificarCP() {
   let nuemroedi = document.getElementById("numEdificio3").value;
   let nombreCP = document.getElementById("cpModificar").value;
@@ -101,6 +109,7 @@ function modificarCP() {
   edificio.codigoPostal = nombreCP;
 }
 
+//imprime numero del edificio.
 function imprimirNumero() {
   let numImprimirEdificio = document.getElementById(
     "numImprimirEdificio"
@@ -110,6 +119,7 @@ function imprimirNumero() {
   document.getElementById("numImpreso").innerHTML = edificio.numero;
 }
 
+//imprime codigo postal 
 function imprimircodigoP() {
   let numImprimirEdificio00 = document.getElementById(
     "numImprimirEdificio."
@@ -118,7 +128,7 @@ function imprimircodigoP() {
 
   document.getElementById("cpostal").innerHTML = edificio.codigoPostal;
 }
-
+//imprime calle del edificio 
 function imprimirCalle() {
   let numImprimirEdificio000 = document.getElementById(
     "numImprimirEdificio.."
@@ -127,12 +137,11 @@ function imprimirCalle() {
 
   document.getElementById("nummCalle").innerHTML = edificio.calle;
 }
-
+// se agregan los propietarios de las pisos o puertas de los edificios.
 function neuevoPropietario() {
   let nEdificio = document.getElementById("numEdificioComp").value;
-  let numPlantaComprada = parseInt(
-    document.getElementById("numPlantaCompada").value
-  );
+  // se utiliza el parseInt por que la entrada del impout es un string
+  let numPlantaComprada = parseInt(document.getElementById("numPlantaCompada").value);
   let numPuertaPiso = parseInt(document.getElementById("numPuertaPiso").value);
   let nombreP = document.getElementById("numPropietario").value;
 
@@ -140,33 +149,35 @@ function neuevoPropietario() {
 
   edificio.plantas[numPlantaComprada - 1][numPuertaPiso - 1].propietario = nombreP;
 }
-
+//imprime plantas
 function imprimirPlantas() {
   let nEdificio = document.getElementById("numEdificioPisos").value;
   let edificio = buscarEdificio(nEdificio);
 
   console.log(edificio.plantas.length);
-
+/**con el numero del edicio se busca y se imprime las plantas.
+ * todo se escrime en un nuevo documento.
+*/
   for (
     let indexPlantas = 0;
     indexPlantas < edificio.plantas.length;
     indexPlantas++
   ) {
-    document.write("PLANTA ");
+    document.write("PLANTA DEL EDIFICIO ");
     document.write("<div>" + indexPlantas + "</div> ");
     for (
       let indexPuertas = 0;
       indexPuertas < edificio.plantas[indexPlantas].length;
       indexPuertas++
     ) {
-      document.write("PUETA Y PROPETARIO ");
+      document.write("PUERTA NUMERO. Y PROPETARIO ");
       document.write(
         "<div>" +
-          edificio.plantas[indexPlantas - 1][indexPuertas - 1].numeroPuerta +
+          "NUMERO DE LA PLANTA DEL EDIFICIO ES:" + edificio.plantas[indexPlantas - 1]+" Y EL NUMERO DE PUERTA ES:"+[indexPuertas - 1].numeroPuerta +
           "</div>"
       );
       document.write(
-        "<div>" +
+        "<div>" + "EL NOMBRE DEL PROPIETARIO ES:"+ 
           edificio.plantas[indexPlantas - 1][indexPuertas - 1].propietario +
           "</div>"
       );
